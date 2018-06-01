@@ -10,7 +10,7 @@ namespace SeleniumElementsTest
     {
         protected abstract By DropdownLocator { get; set; }
 
-        protected SelectElement DropdownElement => new SelectElement(DriverExtensions.WaitForElement(DropdownLocator));
+        private SelectElement DropdownElement => new SelectElement(DriverExtensions.WaitForElement(this.DropdownLocator));
 
         protected virtual List<string> GetAllAvailableOptions() 
             => Driver.Instance.FindElements(DropdownLocator).Select(o => o.Text).ToList();
