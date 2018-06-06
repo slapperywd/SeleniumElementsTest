@@ -55,8 +55,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseDropdown.cs" />
-    <Compile Include="CarDropdown.cs" />
+    <Compile Include="CustomElements\Dropdown\BaseDropdown.cs" />
+    <Compile Include="CustomElements\Dropdown\CarDropdown.cs" />
+    <Compile Include="CustomElements\PanelTab\BasePanelTab.cs" />
+    <Compile Include="CustomElements\PanelTab\BaseTab.cs" />
+    <Compile Include="CustomElements\PanelTab\JqueryTabPanel.cs" />
+    <Compile Include="CustomElements\PanelTab\JuqeryPanelTabs.cs" />
+    <Compile Include="CustomElements\PanelTab\ParisTabComponent.cs" />
     <Compile Include="Driver.cs" />
     <Compile Include="DriverExtensions.cs" />
     <Compile Include="UnitTest1.cs" />

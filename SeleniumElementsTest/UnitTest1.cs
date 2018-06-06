@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using SeleniumElementsTest.CustomElements.PanelTab;
 
 namespace SeleniumElementsTest
 {
@@ -11,7 +12,7 @@ namespace SeleniumElementsTest
         private IWebDriver driver = Driver.Instance;
 
         [TestMethod]
-        public void TestMethod1()
+        public void TestDropDown()
         {
             driver.Manage().Window.Maximize();
           
@@ -20,6 +21,19 @@ namespace SeleniumElementsTest
             Console.WriteLine(carDropdown.GetSelectedOption());
             Console.WriteLine(carDropdown.IsDropDownDisplayed());
             carDropdown.SelectOptionByText("Audi");
+
+            driver.Quit();
+        }
+
+        [TestMethod]
+        public void TestPanelTab()
+        {
+            driver.Manage().Window.Maximize();
+
+            driver.Navigate().GoToUrl("https://www.w3schools.com/howto/howto_js_tabs.asp");
+
+            JqueryTabPanel jqueryTabPanel = new JqueryTabPanel();
+            jqueryTabPanel.ClickTab<ParisTabComponent>(JuqeryPanelTabs.Paris);
 
             driver.Quit();
         }
