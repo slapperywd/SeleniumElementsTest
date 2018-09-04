@@ -6,36 +6,60 @@ using SeleniumElementsTest.CustomElements.PanelTab;
 
 namespace SeleniumElementsTest
 {
+    using SeleniumElementsTest.CustomElements.CustomDropdown;
+
     [TestClass]
     public class UnitTest1
     {
-        private IWebDriver driver = Driver.Instance;
-
-        [TestMethod]
-        public void TestDropDown()
+        [TestInitialize]
+        public void InitializeTest()
         {
             driver.Manage().Window.Maximize();
-          
-            driver.Navigate().GoToUrl("https://www.w3schools.com/howto/howto_custom_select.asp");
-            CarDropdown carDropdown = new CarDropdown();
-            Console.WriteLine(carDropdown.GetSelectedOption());
-            Console.WriteLine(carDropdown.IsDropDownDisplayed());
-            carDropdown.SelectOptionByText("Audi");
+        }
 
+        [TestCleanup]
+        public void CleanUpTest()
+        {
             driver.Quit();
         }
 
-        [TestMethod]
-        public void TestPanelTab()
-        {
-            driver.Manage().Window.Maximize();
+        private IWebDriver driver = Driver.Instance;
 
+        [TestMethod]
+        public void DropDownTest()
+        {
+                    
+            driver.Navigate().GoToUrl("https://www.w3schools.com/howto/howto_custom_select.asp");
+            CarDropdown carDropdown = new CarDropdown();
+            Console.WriteLine(carDropdown.GetAllAvailableOptions());
+            Console.WriteLine(carDropdown.GetSelectedOption());
+            Console.WriteLine(carDropdown.IsDropDownDisplayed());
+            carDropdown.SelectOptionByText("Audi");
+            carDropdown.ToggleDropdown();
+            carDropdown.ToggleDropdown();
+         
+        }
+
+        [TestMethod]
+        public void PanelTabTest()
+        {
             driver.Navigate().GoToUrl("https://www.w3schools.com/howto/howto_js_tabs.asp");
 
             JqueryTabPanel jqueryTabPanel = new JqueryTabPanel();
             jqueryTabPanel.ClickTab<ParisTabComponent>(JuqeryPanelTabs.Paris);
+        }
 
-            driver.Quit();
+        [TestMethod]
+        public void CustomDropdownTest()
+        {
+            driver.Navigate().GoToUrl("https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2017-relnotes#15.7.6");
+
+            MoreDropdown moreDropdown = new MoreDropdown();
+            Console.WriteLine(moreDropdown.IsDropdownDisplayed());
+            Console.WriteLine(moreDropdown.GetAvailableOptions());
+            moreDropdown.ToggleDropdown();
+            moreDropdown.ToggleDropdown();
+            moreDropdown.SelectOptionByText("Education");
         }
     }
 }

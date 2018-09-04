@@ -55,6 +55,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomElements\CustomDropdown\BaseCustomDropdown.cs" />
+    <Compile Include="CustomElements\CustomDropdown\MoreDropdown.cs" />
     <Compile Include="CustomElements\Dropdown\BaseDropdown.cs" />
     <Compile Include="CustomElements\Dropdown\CarDropdown.cs" />
     <Compile Include="CustomElements\PanelTab\BasePanelTab.cs" />

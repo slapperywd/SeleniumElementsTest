@@ -5,6 +5,8 @@ using OpenQA.Selenium.Support.UI;
 
 namespace SeleniumElementsTest
 {
+    using OpenQA.Selenium.Support.Extensions;
+
     public static class DriverExtensions
     {
         private static IWebDriver _driver;
@@ -17,5 +19,7 @@ namespace SeleniumElementsTest
         }
 
         public static IWebElement WaitForElement(params By[] bys) => _wait.Until(d => d.FindElement(new ByChained(bys)));
+
+        public static string GetHiddentText(IWebElement element) => _driver.ExecuteJavaScript<string>("return $(arguments[0]).text();", (object)element);
     }
 }

@@ -12,8 +12,7 @@ namespace SeleniumElementsTest
 
         private SelectElement DropdownElement => new SelectElement(DriverExtensions.WaitForElement(this.DropdownLocator));
 
-        protected virtual List<string> GetAllAvailableOptions() 
-            => Driver.Instance.FindElements(DropdownLocator).Select(o => o.Text).ToList();
+        public virtual List<string> GetAllAvailableOptions() => this.DropdownElement.Options.Select(o => o.Text).ToList();
 
         public virtual bool IsDropDownDisplayed() => DriverExtensions.WaitForElement(DropdownLocator).Displayed;
 
@@ -21,5 +20,7 @@ namespace SeleniumElementsTest
 
         public virtual void SelectOptionByText(string text, bool partialMatch = false) 
             => this.DropdownElement.SelectByText(text, partialMatch);
+
+        public virtual void ToggleDropdown() => DriverExtensions.WaitForElement(DropdownLocator).Click();
     }
 }
