@@ -6,6 +6,11 @@ using SeleniumElementsTest.CustomElements.PanelTab;
 
 namespace SeleniumElementsTest
 {
+    using System.Collections.Generic;
+    using System.Threading;
+
+    using SeleniumElementsTest.CustomElements;
+    using SeleniumElementsTest.CustomElements.Buttons;
     using SeleniumElementsTest.CustomElements.CustomDropdown;
 
     [TestClass]
@@ -60,6 +65,27 @@ namespace SeleniumElementsTest
             moreDropdown.ToggleDropdown();
             moreDropdown.ToggleDropdown();
             moreDropdown.SelectOptionByText("Education");
+        }
+
+        [TestMethod]
+        public void ButtonElementTest()
+        {
+            driver.Navigate().GoToUrl("https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/deployment");
+            var button = new Button(By.XPath("(//a[contains(.,'Previous')])[1]"));
+            
+            button.Click();
+            Thread.Sleep(3500);
+        }
+
+        [TestMethod]
+        public void ListElementTest()
+        {
+            driver.Navigate().GoToUrl("https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/deployment");
+            var anchorsList = new ListElement(By.XPath("//a[@class='local-anchor']"));
+
+            anchorsList.GetItems().ForEach(anchor => anchor.Click());
+
+            Thread.Sleep(3500);
         }
     }
 }
