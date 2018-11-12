@@ -7,11 +7,13 @@ using SeleniumElementsTest.CustomElements.PanelTab;
 namespace SeleniumElementsTest
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading;
 
     using SeleniumElementsTest.CustomElements;
     using SeleniumElementsTest.CustomElements.Buttons;
     using SeleniumElementsTest.CustomElements.CustomDropdown;
+    using SeleniumElementsTest.CustomElements.List;
 
     [TestClass]
     public class UnitTest1
@@ -86,6 +88,28 @@ namespace SeleniumElementsTest
             anchorsList.GetItems().ForEach(anchor => anchor.Click());
 
             Thread.Sleep(3500);
+        }
+
+        [TestMethod]
+        public void ListElementGenericTest()
+        {
+            driver.Navigate().GoToUrl("https://github.com/slapperywd?tab=repositories");
+
+            var repoList = new ListElementGeneric<GitHubRepositoryItem>(By.XPath("//ul[@data-filterable-for='your-repos-filter']/li"));
+            var repoListItems = repoList.GetItems();
+
+            foreach (var repo in repoListItems)
+            {
+                Console.WriteLine($"Repo name {repo.RepositoryName}");
+                Console.WriteLine($"Repo description {repo.Description}");
+                Console.WriteLine($"Programming language {repo.ProgrammingLanguage}");
+                Console.WriteLine($"Date {repo.Date}");
+                Console.WriteLine();
+            }
+
+            repoListItems.First().ClickRepositoryLink();
+
+            //Thread.Sleep(3500);
         }
     }
 }

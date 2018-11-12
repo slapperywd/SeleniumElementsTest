@@ -1,4 +1,4 @@
-﻿namespace SeleniumElementsTest.CustomElements
+﻿namespace SeleniumElementsTest.CustomElements.List
 {
     using System.Collections.Generic;
     using System.Linq;

@@ -60,7 +60,9 @@
     <Compile Include="CustomElements\CustomDropdown\MoreDropdown.cs" />
     <Compile Include="CustomElements\Dropdown\BaseDropdown.cs" />
     <Compile Include="CustomElements\Dropdown\CarDropdown.cs" />
-    <Compile Include="CustomElements\ListElement.cs" />
+    <Compile Include="CustomElements\List\GitHubRepositoryItem.cs" />
+    <Compile Include="CustomElements\List\IListItem.cs" />
+    <Compile Include="CustomElements\List\ListElement.cs" />
     <Compile Include="CustomElements\PanelTab\BasePanelTab.cs" />
     <Compile Include="CustomElements\PanelTab\BaseTab.cs" />
     <Compile Include="CustomElements\PanelTab\JqueryTabPanel.cs" />
@@ -68,6 +70,7 @@
     <Compile Include="CustomElements\PanelTab\ParisTabComponent.cs" />
     <Compile Include="Driver.cs" />
     <Compile Include="DriverExtensions.cs" />
+    <Compile Include="CustomElements\List\ListElementGeneric.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
